@@ -1,0 +1,21 @@
+<h1>New Sub</h1>
+
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
+
+<form action="<%= subs_url %>" method="post">
+  <input type="hidden"
+        name="authenticity_token"
+        value="<%= form_authenticity_token %>">
+
+  <label for="Title">Title</label>
+  <input id="Title" type="text" name="sub[title]">
+  <br>
+  <label for="Description">Description</label>
+  <input id="Description" type="text" name="sub[description]">
+  <br>
+  <input type="submit" name="Create New Sub">
+</form>

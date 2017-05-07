@@ -1,0 +1,26 @@
+<h2><%= current_user.username %></h2>
+
+<%= button_to "Sub Homepage", subs_url, method: :get%>
+<br>
+<h1><%= @sub.title %> Page</h1>
+
+<h3><%= @sub.description %></h3>
+<br>
+<%= link_to "Edit Sub", edit_sub_url%>
+
+<br>
+<h1>Posts</h1>
+<ul>
+  <% @sub.post_subs.each do |post_sub| %>
+  <li><%= link_to post_sub.post.title, post_url(post_sub) %>
+    <%= post_sub.post.url %>
+    <%= post_sub.post.content %>
+    <p>Posted by: <%= current_user.username %></p></li>
+    <br>
+    <% end %>
+</ul>
+
+<%= link_to "Add New Post", new_post_url %>
+<br>
+<br>
+<%= button_to "Remove Post", posts_url, method: :delete %>
