@@ -1,0 +1,28 @@
+.section {
+	display: flex;
+	align-items: center;
+	border-bottom: 2px solid gray;
+	position: relative;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.section-links ul {
+	display: flex;
+	font-family: $sans-serif;
+	font-size: 16px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+  padding: 20px;
+  margin: 20px;
+}
+
+a.section-links {
+  margin: 10px;
+  font-size: 12px;
+}
+
+a.section-links:hover {
+  background-color: $light-gray;
+  text-decoration: underline;
+}
