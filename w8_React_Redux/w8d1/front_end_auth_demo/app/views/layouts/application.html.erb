@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Front End Auth</title>
+  <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application' %>
+  <%= favicon_link_tag 'favicon.png' %>
+
+  <script type="text/javascript">
+    <% if logged_in? %>
+      window.currentUser =
+        <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>
+    <% end %>
+</script>
+
+</head>
+<body>
+
+<%= yield %>
+</body>
+</html>

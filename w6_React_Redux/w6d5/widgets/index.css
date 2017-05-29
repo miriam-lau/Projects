@@ -1,0 +1,43 @@
+head, title, link, body, div span {
+  margin: 0 auto;
+  padding: 0 auto;
+  border: 0 auto;
+
+  font: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+h1 {
+  font-family: 'Love Ya Like A Sister', cursive;
+  text-align: left;
+  width: 75%;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 5%;
+}
+
+.time {
+  display: flex;
+  width: 75%;
+  border: 5px solid black;
+  justify-content: center;
+  flex-direction: column;
+  align-self: center;
+}
+
+.clock {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  text-align: left;
+  background-color: yellow;
+  color: black;
+  font-family: 'Acme', sans-serif;
+}
