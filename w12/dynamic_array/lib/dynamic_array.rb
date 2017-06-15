@@ -4,7 +4,7 @@ class DynamicArray
   attr_reader :length
 
   def initialize
-    @store = Array.new()
+    @store = StaticArray.new(8)
     @length = 0
     @capacity = 8
   end
@@ -34,8 +34,10 @@ class DynamicArray
     if @length == 0
       raise "index out of bounds"
     end
-    @store = @store[0...-1]
+    val, self[length - 1] = self[length - 1], nil
+    # @store = @store[0...-1]
     @length -= 1
+    val
   end
 
   # O(1) ammortized; O(n) worst case. Variable because of the possible
@@ -44,8 +46,12 @@ class DynamicArray
     if @length == @capacity
       self.resize!
     else
-      @store[@length] = val
       @length += 1
+      #increment length first, so won't get out of bounds error
+      @store[@length - 1] = val
+
+      # @store[@length] = val
+      # @length += 1
     end
   end
 
@@ -72,12 +78,16 @@ class DynamicArray
     end
     @store = new_arr.dup
     @length += 1
+
+    # @length += 1
+    # (length - 2).downto(0).each { |i| self[i + 1] = self...}
   end
 
   protected
   attr_accessor :capacity, :store
   attr_writer :length
 
+# helper method for raise error
   def check_index(index)
     if index == @capacity
       self.resize!
@@ -86,7 +96,13 @@ class DynamicArray
 
   # O(n): has to copy over all the elements to the new store.
   def resize!
-    @store.push(@capacity)
+    new_arr = Array.new(@capacity * 2)
+    for i in 0...@capacity do
+      new_arr[i] = @store[i]
+    end
+    @store = new_arr.dup
     @capacity = @capacity * 2
+
+    # length.times { |i| new_store[i] = self[i] }
   end
 end
