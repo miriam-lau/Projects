@@ -25,8 +25,8 @@ class QuickSort
     left = array[0...partition_idx]
     right = array[partition_idx + 1..-1]
 
-    QuickSort(array, 0, left.length) + [array[partition_idx]] +
-      QuickSort(array, partition_idx + 1, right.length)
+    sort1(array, 0, left.length) + [array[partition_idx]] +
+      sort1(array, partition_idx + 1, right.length)
   end
 
   # In-place.
@@ -36,8 +36,8 @@ class QuickSort
     prc ||= Proc.new { |a, b| a <=> b }
     partition_idx = QuickSort.partition(array, start, length, &prc)
 
-    QuickSort.sort2!(array, start, partition_idx - start, &prc)
-    QuickSort.sort2!(array, start + partition_idx + 1, length - partition_idx - 1, &prc)
+    sort2!(array, start, partition_idx - start, &prc)
+    sort2!(array, start + partition_idx + 1, length - partition_idx - 1, &prc)
   end
 
 end
